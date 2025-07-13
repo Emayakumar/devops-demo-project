@@ -5,7 +5,8 @@ pipeline {
   }
   stages {
     stage('Checkout') {
-      steps {
+      steps {sh 'cd demo-java-app && /opt/homebrew/bin/mvn sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
+
         git branch: 'main', url: 'https://github.com/deepakkr35/devops-demo-project.git'
       }
     }
